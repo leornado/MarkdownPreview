@@ -180,7 +180,7 @@ So let's pretend we didn't like Toc's default slugify `markdown.extensions.heade
     "markdown_extensions": [
         {
             "markdown.extensions.toc": {
-                "slugify": {"!!python/name", "pymdownx.slugs.uslugify"}
+                "slugify": {"!!python/name": "pymdownx.slugs.uslugify"}
             }
         }
     ]
