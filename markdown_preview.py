@@ -1147,19 +1147,32 @@ class MarkdownPreviewCommand(sublime_plugin.TextCommand):
         """Open in browser for the appropriate platform."""
         if browser == 'default':
             if sys.platform == 'darwin':
-                # To open HTML files, Mac OS the open command uses the file
-                # associated with `.html`. For many developers this is Sublime,
-                # not the default browser. Getting the right value is
-                # embarrassingly difficult.
-                import shlex
                 import subprocess
-                env = {'VERSIONER_PERL_PREFER_32_BIT': 'true'}
-                raw = """perl -MMac::InternetConfig -le 'print +(GetICHelper "http")[1]'"""
-                process = subprocess.Popen(shlex.split(raw), env=env, stdout=subprocess.PIPE)
-                out, err = process.communicate()
-                default_browser = out.strip().decode('utf-8')
-                cmd = "open -a '%s' %s" % (default_browser, path)
-                os.system(cmd)
+
+                web_handler = None
+                try:
+                    launch_services = os.path.expanduser(
+                        '~/Library/Preferences/com.apple.LaunchServices/com.apple.launchservices.secure.plist'
+                    )
+                    if not os.path.exists(launch_services):
+                        launch_services = os.path.expanduser('~/Library/Preferences/com.apple.LaunchServices.plist')
+                    with open(launch_services, "rb") as f:
+                        content = f.read()
+                    args = ["plutil", "-convert", "json", "-o", "-", "--", "-"]
+                    p = subprocess.Popen(args, stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+                    p.stdin.write(content)
+                    out = p.communicate()[0]
+                    plist = json.loads(str(out, encoding='utf-8'))
+                    for handler in plist['LSHandlers']:
+                        if handler.get('LSHandlerURLScheme', '') == "http":
+                            web_handler = handler.get('LSHandlerRoleAll', None)
+                            break
+                except Exception as e:
+                    pass
+                if web_handler is not None:
+                    subprocess.Popen(['open', '-b', web_handler, path])
+                else:
+                    subprocess.Popen(['open', path])
             else:
                 desktop.open(path)
             sublime.status_message('Markdown preview launched in default browser')
