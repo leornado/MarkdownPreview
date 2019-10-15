@@ -71,6 +71,7 @@ js
 json
 kbd
 lowercases
+macOS
 monokai
 multi
 oauth
