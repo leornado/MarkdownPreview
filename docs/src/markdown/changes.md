@@ -1,5 +1,9 @@
 # Changes
 
+## 2.2.5
+
+- **FIX**: Fix for detecting browser in macOS Catalina.
+
 ## 2.2.4
 
 - **FIX**: Fix GitHub emoji asset links.

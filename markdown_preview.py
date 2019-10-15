@@ -4,6 +4,7 @@ import sublime
 import sublime_plugin
 import os
 import sys
+import subprocess
 import traceback
 import tempfile
 import re
@@ -595,8 +596,6 @@ class OnlineCompiler(Compiler):
     def curl_convert(self, data):
         """Use curl to send Markdown content through API."""
         try:
-            import subprocess
-
             # It looks like the text does NOT need to be escaped and
             # surrounded with double quotes.
             # Tested in Ubuntu 13.10, python 2.7.5+
@@ -854,7 +853,6 @@ class ExternalMarkdownCompiler(Compiler):
 
     def parser_specific_convert(self, markdown_text):
         """Convert Markdown with external parser."""
-        import subprocess
         settings = sublime.load_settings("MarkdownPreview.sublime-settings")
         binary = settings.get('markdown_binary_map', {})[self.compiler_name]
 
@@ -1147,8 +1145,6 @@ class MarkdownPreviewCommand(sublime_plugin.TextCommand):
         """Open in browser for the appropriate platform."""
         if browser == 'default':
             if sys.platform == 'darwin':
-                import subprocess
-
                 web_handler = None
                 try:
                     launch_services = os.path.expanduser(
@@ -1167,7 +1163,7 @@ class MarkdownPreviewCommand(sublime_plugin.TextCommand):
                         if handler.get('LSHandlerURLScheme', '') == "http":
                             web_handler = handler.get('LSHandlerRoleAll', None)
                             break
-                except Exception as e:
+                except Exception:
                     pass
                 if web_handler is not None:
                     subprocess.Popen(['open', '-b', web_handler, path])
