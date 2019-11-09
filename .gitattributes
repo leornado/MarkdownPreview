@@ -3,3 +3,4 @@
 *.css linguist-detectable=false
 
 docs/ export-ignore
+.github/ export-ignore
