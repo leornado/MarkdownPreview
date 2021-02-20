@@ -57,9 +57,10 @@
     /*
         This is the class to prepend to the pygments CSS styles. Make sure it matches whatever class(es)
         you've specified in the extension that controls Pygments highlighting.  CodeHilite's default is
-        "codehilite".
+        "codehilite". Pymdownx's default is "highlight". Depending on which highlighter you are using,
+        you should update accordingly.
     */
-    "pygments_css_class": "codehilite",
+    "pygments_css_class": "highlight",
 
     /*
         Markdown extension configuration.
@@ -77,15 +78,10 @@
         "markdown.extensions.def_list",
         "markdown.extensions.tables",
         "markdown.extensions.abbr",
+        "markdown.extensions.md_in_html",
         "pymdownx.betterem",
-        {
-            "markdown.extensions.codehilite": {
-                "guess_lang": false
-            }
-        },
         // Extra's Markdown parsing in raw HTML cannot be
         // included by itself, but "pymdownx" exposes it so we can.
-        "pymdownx.extrarawhtml",
 
         // More default Python Markdown extensions
         {

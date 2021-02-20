@@ -35,11 +35,9 @@
           - markdown.extensions.smarty
           - markdown.extensions.meta
           - markdown.extensions.admonition
-          - markdown.extensions.codehilite:
-              guess_lang: false
           - pymdownx.arithmatex:
               generic: true
-          - pymdownx.extrarawhtml
+          - markdown.extensions.md_in_html
           - pymdownx.progressbar
           - pymdownx.caret:
               superscript: false
@@ -60,8 +58,8 @@
                   align: absmiddle
                   height: 20px
                   width: 20px
-                image_path: https://assets-cdn.github.com/images/icons/emoji/unicode/
-                non_standard_image_path: https://assets-cdn.github.com/images/icons/emoji/
+                image_path: https://github.githubassets.com/images/icons/emoji/unicode/
+                non_standard_image_path: https://github.githubassets.com/images/icons/emoji/
           - pymdownx.tasklist
           - pymdownx.superfences:
               custom_fences:
