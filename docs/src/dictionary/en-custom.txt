@@ -5,6 +5,7 @@ Bouquillon
 Bushell
 CSS
 Cmd
+CommonMark
 CriticMarkup
 DOM
 EMOJI
@@ -42,6 +43,7 @@ SuperFences
 TODO
 Toc
 Toc's
+Twemoji
 UML
 UTF
 Ubuntu
