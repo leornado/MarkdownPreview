@@ -21,10 +21,11 @@ theme:
     - navigation.tabs
 
 nav:
-  - Markdown Preview: index.md
-  - Installation: install.md
-  - Usage: usage.md
-  - Extras: extras.md
+  - Home:
+    - Markdown Preview: index.md
+    - Installation: install.md
+    - Usage: usage.md
+    - Extras: extras.md
   - About:
     - Changes: changes.md
     - License: license.md
