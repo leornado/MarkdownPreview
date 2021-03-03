@@ -1,5 +1,15 @@
 # Changes
 
+## 2.3.0
+
+- **NEW**: `pymdownx.superfences` no longer sources any settings from `markdown.extensions.codehilite` and instead uses
+  `pymdownx.highlight`. No need to specify `markdown.extensions.codehilite` in the default settings.
+- **NEW**: Default `pygments_css` class is now set to `highlight` which is `pymdownx.highlight`'s default. If you are
+  using `pymdownx.superfences`, you use use `highlight`, if you are using `markdown.extensions.codehilite`, then you may
+  want to change this to `codehilite`, or change `codehilite` to use the `highlight` class as well.
+- **FIX**: Use `markdown.extensions.md_in_html` instead of `pymdownx.extrarawhtml` in the default settings as the latter
+  is no longer available in the latest dependency.
+
 ## 2.2.5
 
 - **FIX**: Fix for detecting browser in macOS Catalina.

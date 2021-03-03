@@ -2,5 +2,6 @@
     "install": "README.md",
     "2.0.0": "docs/src/markdown/changes.md",
     "2.1.0": "docs/src/markdown/changes.md",
-    "2.2.0": "docs/src/markdown/changes.md"
+    "2.2.0": "docs/src/markdown/changes.md",
+    "2.3.0": "docs/src/markdown/changes.md"
 }
