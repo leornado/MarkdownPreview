@@ -2,6 +2,8 @@
 
 ## 2.3.0
 
+Some **breaking** changes! Please read:
+
 - **NEW**: `pymdownx.superfences` no longer sources any settings from `markdown.extensions.codehilite` and instead uses
   `pymdownx.highlight`. No need to specify `markdown.extensions.codehilite` in the default settings.
 - **NEW**: Default `pygments_css` class is now set to `highlight` which is `pymdownx.highlight`'s default. If you are
