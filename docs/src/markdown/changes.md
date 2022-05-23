@@ -4,6 +4,7 @@
 
 - **NEW**: Add `mermaid.js` support.
 - **NEW**: Remove border form default styling of `markdown` and `github`.
+- **NEW**: Exit out of `on_post_save` even quicker if no work is needed.
 - **FIX**: `title` in YAML frontmatter should be handled case insensitively.
 
 ## 2.3.0
@@ -75,17 +76,22 @@ Some **breaking** changes! Please read:
 
 ## 2.0.0
 
-Please read documentation as there have been big changes in this version which may require updates to your personal settings.
+Please read documentation as there have been big changes in this version which may require updates to your personal
+settings.
 
 * Do not vendor Python Markdown. Python Markdown will be acquired via the current markdown dependency.
 
 * Python Markdown configuration changes:
 
     * No more defining settings as `extension(option1=a,option2=b)`. Options will be defined as a dictionary.
-    * You will have to define the full extension name: `markdown.extensions.codehilite`. This will allow you to import any extension you want outside of Markdown Preview.
-    * New line to `<br>` conversion has been dropped from GitHub emulation as GitHub no longer does this. Ref issue #374.
+    * You will have to define the full extension name: `markdown.extensions.codehilite`. This will allow you to import
+      any extension you want outside of Markdown Preview.
+    * New line to `<br>` conversion has been dropped from GitHub emulation as GitHub no longer does this. Ref issue
+      #374.
 
-* Originally a couple pymdownx-extension extensions were ported over to this plugin to give a GitHub-ish feel to Markdown, these are no longer be included directly, but are included as a dependency. This will provide the latest versions, and also provide new extensions previously not included. Ref issue #378.
+* Originally a couple pymdownx-extension extensions were ported over to this plugin to give a GitHub-ish feel to
+  Markdown, these are no longer be included directly, but are included as a dependency. This will provide the latest
+  versions, and also provide new extensions previously not included. Ref issue #378.
 
 * Drop ST2 so we no longer have to provide specially crafted Python Markdown versions when we try to upgrade.
 
@@ -124,10 +130,13 @@ Please read documentation as there have been big changes in this version which m
 
 ## 1.3.0
 
-* Now supports any markdown parser through a generalized method.  Now you can map a binary to parser name via `markdown_binary_map`.  Then use the parser name in `enabled_parsers` to use it.
-* MultiMarkdown specific settings have been removed.  MultiMarkdown should now be configured via `markdown_binary_map` and `enabled_parsers`.
+* Now supports any markdown parser through a generalized method.  Now you can map a binary to parser name via
+  `markdown_binary_map`.  Then use the parser name in `enabled_parsers` to use it.
+* MultiMarkdown specific settings have been removed.  MultiMarkdown should now be configured via `markdown_binary_map`
+  and `enabled_parsers`.
 * Upgraded to Python Markdown 2.6.4.
-* Removed internal PyYaml and Pygments.  Markdown Preview now uses Package Control dependencies to obtain PyYaml and Pygments.
+* Removed internal PyYaml and Pygments.  Markdown Preview now uses Package Control dependencies to obtain PyYaml and
+  Pygments.
 * Update kbd CSS for GitHub.
 
 ## 1.0.3
