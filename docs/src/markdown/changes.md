@@ -3,6 +3,7 @@
 ## 2.4.0
 
 - **NEW**: Add `mermaid.js` support.
+- **NEW**: Remove border form default styling of `markdown` and `github`.
 - **FIX**: `title` in YAML frontmatter should be handled case insensitively.
 
 ## 2.3.0
