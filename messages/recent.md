@@ -11,6 +11,6 @@ the release.
 ## 2.4.0
 
 - **NEW**: Add `mermaid.js` support.
-- **NEW**: Remove border form default styling of `markdown` and `github`.
+- **NEW**: Remove border from default styling of `markdown` and `github`.
 - **NEW**: Exit out of `on_post_save` even quicker if no work is needed.
 - **FIX**: `title` in YAML frontmatter should be handled case insensitively.
