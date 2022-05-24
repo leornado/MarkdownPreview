@@ -397,7 +397,6 @@ YAML frontmatter has a few special key names that are used that will not be hand
 
     # Settings overrides
     settings:
-        enable_uml: true
         markdown_extensions:
           - markdown.extensions.footnotes
           - markdown.extensions.attr_list
