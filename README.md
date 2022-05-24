@@ -44,13 +44,12 @@ https://fontawesome.com/license
 
 ## License
 
-The code is available at [GitHub][home] under the [MIT license][license].
+The code is available at under the [MIT license][license].
 
 [bps10]: https://github.com/bps10
 [gfm-api]: https://developer.github.com/v3/markdown/
 [glfm-api]: https://docs.gitlab.com/ee/api/markdown.html
 [hexatrope]: https://github.com/hexatrope
-[home]: https://github.com/revolunet/sublimetext-markdown-preview
 [hozaka]: https://github.com/hozaka
 [hadisfr]: https://github.com/hadisfr
 [issue]: https://github.com/facelessuser/MarkdownPreview/issues
