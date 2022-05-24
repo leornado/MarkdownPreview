@@ -5,6 +5,8 @@ New release!
 A restart might be required. If you see issues immediately after the update  
 please try restarting.
 
+Please see https://facelessuser.github.io/MarkdownPreview for more info about  
+the release.
 
 ## 2.4.0
 
