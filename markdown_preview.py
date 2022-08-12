@@ -18,7 +18,7 @@ from collections import OrderedDict
 from urllib.request import urlopen
 from urllib.error import HTTPError, URLError
 from pygments.formatters import get_formatter_by_name
-from . import desktop
+from .browser import open_in_browser
 from .markdown_settings import Settings
 from .markdown_wrapper import StMarkdown as Markdown
 
@@ -1144,33 +1144,7 @@ class MarkdownPreviewCommand(sublime_plugin.TextCommand):
     def open_in_browser(cls, path, browser='default'):
         """Open in browser for the appropriate platform."""
         if browser == 'default':
-            if sys.platform == 'darwin':
-                web_handler = None
-                try:
-                    launch_services = os.path.expanduser(
-                        '~/Library/Preferences/com.apple.LaunchServices/com.apple.launchservices.secure.plist'
-                    )
-                    if not os.path.exists(launch_services):
-                        launch_services = os.path.expanduser('~/Library/Preferences/com.apple.LaunchServices.plist')
-                    with open(launch_services, "rb") as f:
-                        content = f.read()
-                    args = ["plutil", "-convert", "json", "-o", "-", "--", "-"]
-                    p = subprocess.Popen(args, stdin=subprocess.PIPE, stdout=subprocess.PIPE)
-                    p.stdin.write(content)
-                    out = p.communicate()[0]
-                    plist = json.loads(str(out, encoding='utf-8'))
-                    for handler in plist['LSHandlers']:
-                        if handler.get('LSHandlerURLScheme', '') == "http":
-                            web_handler = handler.get('LSHandlerRoleAll', None)
-                            break
-                except Exception:
-                    pass
-                if web_handler is not None:
-                    subprocess.Popen(['open', '-b', web_handler, path])
-                else:
-                    subprocess.Popen(['open', path])
-            else:
-                desktop.open(path)
+            open_in_browser(path)
             sublime.status_message('Markdown preview launched in default browser')
         else:
             cmd = '"%s" %s' % (browser, path)
