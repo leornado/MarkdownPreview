@@ -19,7 +19,7 @@ else:
 
 
 def to_unicode(string, encoding='utf-8'):
-    """Convert byte string to unicode."""
+    """Convert byte string to Unicode."""
 
     return str(string, encoding) if isinstance(string, bytes) else string
 
@@ -53,7 +53,7 @@ def open_in_browser(name):
             # Open with the URL handler we found
             subprocess.Popen(['open', '-b', web_handler, name])
         else:
-            # Just open normaly as we never found a web_handler
+            # Just open normally as we never found a web_handler
             subprocess.Popen(['open', name])
     elif PLATFORM == "windows":
         webbrowser.open(name, new=2)
