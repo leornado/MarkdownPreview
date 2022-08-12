@@ -1,8 +1,8 @@
 # Changes
 
-## 2.5.0
+## 2.4.1
 
-- **NEW**: Remove `desktop` lib as we should not have been using it under our current license.
+- **FIX**: Remove `desktop` lib as we should not have been using it under our current license.
 - **FIX**: Fix a typo which prevents displaying useful error message.
 
 ## 2.4.0
