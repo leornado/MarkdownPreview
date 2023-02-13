@@ -1,5 +1,9 @@
 # Changes
 
+## 2.4.2
+
+- **FIX**: Fix style so that PDF printing works in Chrome based browsers.
+
 ## 2.4.1
 
 - **FIX**: Remove `desktop` lib as we should not have been using it under our current license.
