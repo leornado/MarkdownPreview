@@ -85,11 +85,23 @@ var uml = (function (converter, className, settings) {
 
   onReady(function () {
     if (typeof flowchart !== "undefined") {
-      uml(flowchart, "uml-flowchart");
+      uml(flowchart, "uml-flowchart", {
+	    'font-color'   : 'white',
+	    'line-color'   : 'white',
+	    'element-color': 'white',
+	    'fill'         : 'black',
+	  });
     }
 
     if (typeof Diagram !== "undefined") {
-      uml(Diagram, "uml-sequence-diagram", { theme: "simple" });
+      uml(Diagram, "uml-sequence-diagram", { 
+      	theme: "simple",
+	    'font-color'   : 'white',
+	    'line-color'   : 'white',
+	    'element-color': 'white',
+	    'stroke'	   : '#FFFFFF',
+	    'fill'         : '#000000'
+      });
     }
   });
 })();

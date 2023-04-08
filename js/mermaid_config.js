@@ -1,6 +1,6 @@
 window.mermaidConfig = {
   startOnLoad: false,
-  theme: "default",
+  theme: "dark",
   flowchart: {
     htmlLabels: false
   },

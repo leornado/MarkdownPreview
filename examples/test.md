@@ -82,7 +82,7 @@ title: This title will be overridden by YAML
 # Cheat Sheet and Test
 
 [TOC]
-
+ 
 ## Headers
 
 ```
@@ -248,11 +248,11 @@ With this link (https://github.com/revolunet/sublimetext-markdown-preview/), it 
 Footnotes[^1] have a label[^label] and a definition[^!DEF]
 
 Web image
-![Web Picture](http://www.revolunet.com/static/parisjs8/img/logo-revolunet-carre.jpg "Web Picture")
-
+![Web Picture](https://raw.githubusercontent.com/facelessuser/MarkdownPreview/master/examples/logo-revolunet-carre.jpg "Web Picture")
+ 
 Local image
 ![Local Picture](logo-revolunet-carre.jpg "Local Picture")
-
+  
 www.google.com
 
 contact@revolunet.com
@@ -282,6 +282,11 @@ is maintained by the W3C.
 
 The HTML specification 
 is maintained by the W3C.
+
+The HTML 5 水淀粉 法.
+
+*[HTML 5]: asdfasdf地方
+*[水淀粉 法]: 123123
 
 ## Unordered List
 
@@ -492,13 +497,59 @@ function doIt() {
     }
 }
 ```
-
+ 
 ```javascript
 // Fenced **with** highlighting
 function doIt() {
     for (var i = 1; i <= slen ; i^^) {
         setTimeout("document.z.textdisplay.value = newMake()", i*300);
         setTimeout("window.status = newMake()", i*300);
+    }
+}
+```
+
+```python
+from typing import Iterator
+
+# This is an example
+class Math:
+    @staticmethod
+    def fib(n: int) -> Iterator[int]:
+        """Fibonacci series up to n."""
+        a, b = 0, 1
+        while a < n:
+            yield a
+            a, b = b, a + b
+
+result = sum(Math.fib(42))
+print("The answer is {}".format(result))
+```
+
+```java
+@Service
+public class ApiDataAnalysisService {
+
+    @Resource
+    private RedisTemplate redisTemplate;
+
+    @Resource
+    private TaskDataAnalysisService taskDataAnalysisService;
+
+    @Resource
+    private RedisService redisService;
+
+    /**
+     * 好差评大屏 实时分析 总体情况 评价总数
+     * @return
+     */
+    public ScreenTotal getAppraiseCount() {
+        ScreenTotal screenTotal;
+        if (redisTemplate.hasKey(ApiCacheKey.API_TOTAL_REAL_TIME.name())) {
+            screenTotal = (ScreenTotal) redisTemplate.opsForValue().get(ApiCacheKey.API_TOTAL_REAL_TIME.name());
+        } else {
+            screenTotal = taskDataAnalysisService.setTotalRealTimeAnalysisToRedis();
+        }
+        return screenTotal;
     }
 }
 ```
@@ -514,12 +565,70 @@ function doIt() {
 }
 ```
 
+### javascript
+
 ```javascript
 // Fenced **with** highlighting
 function doIt() {
     for (var i = 1; i <= slen ; i^^) {
         setTimeout("document.z.textdisplay.value = newMake()", i*300);
         setTimeout("window.status = newMake()", i*300);
+    }
+}
+
+class A {
+
+  A = "123"
+
+}
+```
+
+### python
+
+```python
+from typing import Iterator
+
+# This is an example
+class Math:
+    @staticmethod
+    def fib(n: int) -> Iterator[int]:
+        """Fibonacci series up to n."""
+        a, b = 0, 1
+        while a < n:
+            yield a
+            a, b = b, a + b
+
+result = sum(Math.fib(42))
+print("The answer is {}".format(result))
+```
+ 
+### java
+
+```java
+@Service
+public class ApiDataAnalysisService {
+
+    @Resource
+    private RedisTemplate redisTemplate;
+
+    @Resource
+    private TaskDataAnalysisService taskDataAnalysisService;
+
+    @Resource
+    private RedisService redisService;
+
+    /**
+     * 好差评大屏 实时分析 总体情况 评价总数
+     * @return
+     */
+    public ScreenTotal getAppraiseCount() {
+        ScreenTotal screenTotal;
+        if (redisTemplate.hasKey(ApiCacheKey.API_TOTAL_REAL_TIME.name())) {
+            screenTotal = (ScreenTotal) redisTemplate.opsForValue().get(ApiCacheKey.API_TOTAL_REAL_TIME.name());
+        } else {
+            screenTotal = taskDataAnalysisService.setTotalRealTimeAnalysisToRedis();
+        }
+        return screenTotal;
     }
 }
 ```
@@ -539,6 +648,7 @@ function doIt() {
 | Red           | *Apple*         | Pepper       |
 | ~~Orange~~    | Oranges         | **Carrot**   |
 | Green         | ~~***Pears***~~ | Spinach      |
+
 
 ## Smart Strong
 
@@ -634,9 +744,20 @@ Modified Text
     - Here is some info.
     - And some more
 
-!!! Caution "Warning!"
-    - [X] Make sure you turn off the stove
-    - [X] Don't run with scissors
+- 123asdf
+  + 123123
+  
+    !!! Caution "Warning!"
+        * [X] Make sure you turn off the stove
+        * [X] Don't run with scissors
+        
+        !!! Hint "Info!"
+            - Here is some info.
+            - And some more
+        
+        阿斯顿发斯蒂芬
+
+  + asdf水淀粉
 
 !!! Danger "Alert!"
     You really need to read [this](#admonition)!
@@ -713,6 +834,7 @@ __^^_insert italic bold_^^__  _^^__insert italic bold 2__^^_
 
 __^^*insert italic bold*^^__  *^^__insert italic bold 2__^^*
 ```
+ 
 
 ^^insert^^
 
@@ -735,6 +857,22 @@ __^^_insert italic bold_^^__  _^^__insert italic bold 2__^^_
 **^^_insert italic bold_^^**  _^^**insert italic bold 2**^^_
 
 __^^*insert italic bold*^^__  *^^__insert italic bold 2__^^*
+
+
+
+## CriticMarkup
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. {==Vestibulum at
+orci magna. Phasellus augue justo, sodales eu pulvinar ac, vulputate eget
+nulla.==}{>>confusing<<} Mauris massa sem, tempor sed cursus et, semper
+tincidunt lacus.
+
+Don’t go around saying{‐‐ to people that‐‐} the world owes you a living. The
+world owes you nothing. It was here first. {~~One~>Only one~~} thing is
+impossible for God: To find {++any++} sense in any copyright law on the
+planet. {==Truth is stranger than fiction==}{>>true<<}, but it is because
+Fiction is obliged to stick to possibilities; Truth isn’t. 
+
 
 ## Progress
 
@@ -772,6 +910,11 @@ To turn off level classes (which are used to decide special colors for certain p
 |No Label            |[= 50%]                                        |
 |Inline              |Before[= 50% "I'm a block!"]After              |
 |Gloss and Animated  |[= 50% "Gloss"]{: .candystripe-animate .gloss} |
+|Animated: 5%        |[=5% "5%"]{: .candystripe-animate .progress-info}             |
+|Animated: 25%       |[=25% "25%"]{: .candystripe-animate .progress-danger}           |
+|Animated: 45%       |[=45% "45%"]{: .candystripe-animate .progress-warning}           |
+|Animated: 65%       |[=65% "65%"]{: .candystripe-animate .progress-primary}           |
+|Animated: 85%        |[=85% "85%"]{: .candystripe-animate .progress-success}             |
 
 ## Neseted Fences
 
@@ -926,7 +1069,7 @@ sequenceDiagram
 ## Math
 
 ```
-$p(x|y) = \frac{p(y|x)p(x)}{p(y)}$, \(p(x|y) = \frac{p(y|x)p(x)}{p(y)}\).
+$p(x|y) = \frac{p(y|x)p(x)}{p(y)}, \(p(x|y) = \frac{p(y|x)p(x)}{p(y)}\).
 
 $$
 E(\mathbf{v}, \mathbf{h}) = -\sum_{i,j}w_{ij}v_i h_j - \sum_i b_i v_i - \sum_j c_j h_j

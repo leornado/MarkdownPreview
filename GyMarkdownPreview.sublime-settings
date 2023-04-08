@@ -78,6 +78,11 @@
         the function "module.submodule.etc.function".
     */
     "markdown_extensions": [
+        {
+            "pymdownx.arithmatex": {
+                "generic": true
+            }
+        },
         // Python Markdown Extra with SuperFences.
         // You can't include "extra" and "superfences"
         // as "fenced_code" cannot be included with "superfences",
@@ -89,8 +94,17 @@
         "markdown.extensions.abbr",
         "markdown.extensions.md_in_html",
         "pymdownx.betterem",
+        "pymdownx.progressbar",
+        "pymdownx.caret",
+        // "pymdownx.highlight",
+        {
+            "markdown.extensions.codehilite": {
+                "guess_lang": false
+            }
+        },
         // Extra's Markdown parsing in raw HTML cannot be
         // included by itself, but "pymdownx" exposes it, so we can.
+        "pymdownx.extrarawhtml",
 
         // More default Python Markdown extensions
         {
@@ -233,7 +247,8 @@
         Should be an array, but will take a single string to support legacy convention.
     */
     "css": {
-        "markdown": ["default"],
+        // "markdown": ["default"],
+        "markdown": ["default", "res://GyMarkdownPreview/css/dark.css"],
         "github": ["default"],
         "gitlab": ["default"]
     },
@@ -273,7 +288,13 @@
         Should be an array, but will take a single string to stay consistent with "css".
     */
     "js": {
-        "markdown": ["default"],
+        // "markdown": ["default"],
+        "markdown": [
+            // "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js",
+            "http://lib.baomitu.com/mathjax/2.7.7/MathJax.js",
+            "res://GyMarkdownPreview/js/math_config.js",
+            "res://GyMarkdownPreview/js/darkreader.js"
+        ],
         "github": ["default"],
         "gitlab": ["default"]
     },
@@ -360,12 +381,14 @@
 
         Critic marks only affect the "github" and "markdown" parser.
     */
-    "strip_critic_marks": "none",
+    // "strip_critic_marks": "none",
+    "strip_critic_marks": "accept",
 
     /*
         Strips the YAML front matter header and converts title to a heading.
     */
-    "strip_yaml_front_matter": false,
+    // "strip_yaml_front_matter": false,
+    "strip_yaml_front_matter": true,
 
     /*
         Sets visibility of the build output panel when building with CMD+B.

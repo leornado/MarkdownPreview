@@ -90,7 +90,7 @@ def request_url(url, data, headers):
 
 def get_temp_preview_path(view):
     """Return a permanent full path of the temp markdown preview file."""
-    settings = sublime.load_settings('MarkdownPreview.sublime-settings')
+    settings = sublime.load_settings('GyMarkdownPreview.sublime-settings')
 
     tmp_filename = '%s.html' % view.id()
     if settings.get('path_tempfile'):
@@ -172,7 +172,7 @@ class MarkdownPreviewListener(sublime_plugin.EventListener):
 
     def on_post_save(self, view):
         """Handle auto-reload on save."""
-        settings = sublime.load_settings('MarkdownPreview.sublime-settings')
+        settings = sublime.load_settings('GyMarkdownPreview.sublime-settings')
         filetypes = settings.get('markdown_filetypes')
         file_name = view.file_name()
         if filetypes and file_name is not None and file_name.endswith(tuple(filetypes)):
@@ -538,7 +538,7 @@ class Compiler(object):
 
     def run(self, view, wholefile=False, preview=False):
         """Return full HTML and body HTML for view."""
-        self.settings = Settings('MarkdownPreview.sublime-settings', view.file_name())
+        self.settings = Settings('GyMarkdownPreview.sublime-settings', view.file_name())
         self.preview = preview
         self.view = view
 
@@ -727,7 +727,7 @@ class OnlineCompiler(Compiler):
 class GithubCompiler(OnlineCompiler):
     """GitHub compiler."""
 
-    default_css = ["res://MarkdownPreview/css/github.css"]
+    default_css = ["res://GyMarkdownPreview/css/github.css"]
     compiler_name = "github"
     content_type = "application/json"
     url = "https://api.github.com/markdown"
@@ -782,7 +782,7 @@ class GitlabCompiler(OnlineCompiler):
     """GitLab compiler."""
 
     default_css = [
-        "res://MarkdownPreview/css/gitlab.css",
+        "res://GyMarkdownPreview/css/gitlab.css",
         "https://cdn.jsdelivr.net/npm/katex@0.10.0-alpha/dist/katex.min.css"
     ]
     default_js = [
@@ -790,7 +790,7 @@ class GitlabCompiler(OnlineCompiler):
         "https://unpkg.com/mermaid@8.0.0-rc.8/dist/mermaid.min.js",
         # Calling `mermaid.initialize` at the first lines of `gitlab_config.js`
         # should come immediately after `mermaid.js.`
-        "res://MarkdownPreview/js/gitlab_config.js"
+        "res://GyMarkdownPreview/js/gitlab_config.js"
     ]
     compiler_name = "gitlab"
     content_type = "application/json"
@@ -843,7 +843,7 @@ class GitlabCompiler(OnlineCompiler):
 class ExternalMarkdownCompiler(Compiler):
     """Compiler for other, external Markdown parsers."""
 
-    default_css = ["res://MarkdownPreview/css/markdown.css"]
+    default_css = ["res://GyMarkdownPreview/css/markdown.css"]
 
     def __init__(self, parser):
         """Initialize."""
@@ -853,7 +853,7 @@ class ExternalMarkdownCompiler(Compiler):
 
     def parser_specific_convert(self, markdown_text):
         """Convert Markdown with external parser."""
-        settings = sublime.load_settings("MarkdownPreview.sublime-settings")
+        settings = sublime.load_settings("GyMarkdownPreview.sublime-settings")
         binary = settings.get('markdown_binary_map', {})[self.compiler_name]
 
         if len(binary) and os.path.exists(binary[0]):
@@ -889,7 +889,7 @@ class MarkdownCompiler(Compiler):
     """Python Markdown compiler."""
 
     compiler_name = "markdown"
-    default_css = ["res://MarkdownPreview/css/markdown.css"]
+    default_css = ["res://GyMarkdownPreview/css/markdown.css"]
 
     def set_highlight(self, pygments_style, css_class):
         """Set the Pygments CSS."""
@@ -994,7 +994,7 @@ class MarkdownPreviewSelectCommand(sublime_plugin.TextCommand):
 
     def run(self, edit, target='browser'):
         """Show menu of parsers to select from."""
-        settings = sublime.load_settings("MarkdownPreview.sublime-settings")
+        settings = sublime.load_settings("GyMarkdownPreview.sublime-settings")
         md_map = settings.get('markdown_binary_map', {})
         parsers = [
             "markdown",
@@ -1051,7 +1051,7 @@ class MarkdownPreviewCommand(sublime_plugin.TextCommand):
 
     def run(self, edit, parser='markdown', target='browser'):
         """Run the conversion with the specified parser and output to the specified target."""
-        self.settings = sublime.load_settings('MarkdownPreview.sublime-settings')
+        self.settings = sublime.load_settings('GyMarkdownPreview.sublime-settings')
 
         # backup parser+target for later saves
         self.view.settings().set('parser', parser)
@@ -1183,7 +1183,7 @@ class MarkdownBuildCommand(sublime_plugin.WindowCommand):
 
         self.init_panel()
 
-        settings = sublime.load_settings('MarkdownPreview.sublime-settings')
+        settings = sublime.load_settings('GyMarkdownPreview.sublime-settings')
         parser = settings.get('parser', 'markdown')
         if parser == 'default':
             log(
